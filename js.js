@@ -4,7 +4,7 @@ var lista_de_produtos = []
 function projeto() {
     while (true) {
         var opcao = prompt(`
-        bem vindo ao casdatro de produtos! :)
+        bem vindo ao casdastro de produtos! :)
         
         1-cadastrar produto
         2-remover produto
@@ -38,48 +38,78 @@ function cadastro() {
         marca: "",
         preco: ""
     }
-
-    adicionar.nome = prompt("insira o nome")
-    adicionar.marca = prompt("insira a marca")
-    adicionar.preco = prompt("insira o preço")
-    lista_de_produtos.push(adicionar)
-
+    var lista_de_c = prompt(
+    `#para continuar digite "continuar"
+    #caso queira sair digite "sair"`
+    )
+    if (lista_de_c == "sair") {
+        projeto()
+    } else if (lista_de_c == "continuar") {
+        adicionar.nome = prompt("insira o nome")
+        adicionar.marca = prompt("insira a marca")
+        adicionar.preco = prompt("insira o preço")
+        lista_de_produtos.push(adicionar)
+    }
 }
 
 function olhar_produtos() {
-    var texto = ``
-    for (let i = 0; i < lista_de_produtos.length; i++) {
+    var lista_de_c = prompt(
+    `#para continuar digite "continuar"
+    #caso queira sair digite "sair"`
+    )
+    if (lista_de_c == "sair") {
+        projeto()
+    } else if (lista_de_c == "continuar") {
 
-        texto += `nome: ${lista_de_produtos[i].nome} marca: ${lista_de_produtos[i].marca} preço: ${lista_de_produtos[i].preco}\n`
+        var texto = ``
+        for (let i = 0; i < lista_de_produtos.length; i++) {
 
+            texto += `nome: ${lista_de_produtos[i].nome} marca: ${lista_de_produtos[i].marca} preço: ${lista_de_produtos[i].preco}\n`
+
+        }
+        alert(texto)
     }
-    alert(texto)
 }
 
 function remover() {
-    var remover = `produtos para remover:\n`
-    for (let i = 0; i < lista_de_produtos.length; i++) {
+    var lista_de_c = prompt(
+    `#para continuar digite "continuar"
+    #caso queira sair digite "sair"`
+    )
+    if (lista_de_c == "sair") {
+        projeto()
+    } else if (lista_de_c == "continuar") {
+        var remover = `produtos para remover:\n`
+        for (let i = 0; i < lista_de_produtos.length; i++) {
 
-        remover += `nome: ${lista_de_produtos[i].nome} marca: ${lista_de_produtos[i].marca} preço: ${lista_de_produtos[i].preco}\n`
+            remover += `nome: ${lista_de_produtos[i].nome} marca: ${lista_de_produtos[i].marca} preço: ${lista_de_produtos[i].preco}\n`
 
+        }
+        var produto_desejado = alert(remover);
+        var outro = prompt(`qual preduto você deseja remover?`);
+        lista_de_produtos.splice(outro - 1, 1)
+        alert("produto removido :)")
     }
-    var produto_desejado = alert(remover); 
-    var outro=prompt(`qual preduto você deseja remover?`);
-    var remove = (remove)-1
-    lista_de_produtos.splice(remove,1)
-    alert("produto removido :)")
 }
 
 
 function editar() {
-    var editar = `produtos:\n`
-    for (let i = 0; i < lista_de_produtos.length; i++) {
+    var lista_de_c = prompt(
+    `#para continuar digite "continuar" 
+    #caso queira sair digite "sair"`
+    )
+    if (lista_de_c == "sair") {
+        projeto()
+    } else if (lista_de_c == "continuar") {
+        var editar = `produtos:\n`
+        for (let i = 0; i < lista_de_produtos.length; i++) {
 
-        editar += `nome: ${lista_de_produtos[i].nome} marca: ${lista_de_produtos[i].marca} preço: ${lista_de_produtos[i].preco}\n`
+            editar += `nome: ${lista_de_produtos[i].nome} marca: ${lista_de_produtos[i].marca} preço: ${lista_de_produtos[i].preco}\n`
 
+        }
+        var produto_desejado = prompt(editar + `qual preduto você deseja editar?`);
+        lista_de_produtos[produto_desejado - 1].nome = prompt("digite o novo nome")
+        lista_de_produtos[produto_desejado - 1].marca = prompt("digite a nova marca")
+        lista_de_produtos[produto_desejado - 1].preco = prompt("digite o novo preço")
     }
-    var produto_desejado = prompt(editar+`qual preduto você deseja editar?`);
-    lista_de_produtos[produto_desejado - 1].nome = prompt("digite o novo nome")
-    lista_de_produtos[produto_desejado - 1].marca = prompt("digite a nova marca")
-    lista_de_produtos[produto_desejado - 1].preco = prompt("digite o novo preço")
-    }
+}
